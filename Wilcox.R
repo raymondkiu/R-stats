@@ -44,11 +44,12 @@ pairwise_wilcox_test(Birthweight ~ Group, data = data, conf.level = 0.95,paired 
 #* <chr>       <chr>        <chr>     <int> <int>     <dbl> <dbl> <dbl> <chr>       
 #1 Birthweight Nonprobiotic Probiotic    19    15      51.5 0.002 0.002 **   
 
+# Show some stats, group_by is a function of dplyr
 data %>%  group_by(Group) %>% 
   summarise(
     count = n(), 
     mean = mean(Birthweight),
     sd = sd(Birthweight)
   )
-data %>%  group_by(Group) %>% summarise(quantile=quantile(Birthweight))  %>% as.data.frame()# to get IQR
+data %>%  group_by(Group) %>% summarise(quantile=quantile(Birthweight))  %>% as.data.frame()# to get IQR, use as.data.frame to show decimal places tibble may not show
 
